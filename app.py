@@ -28,9 +28,26 @@ st.pyplot(fig)
 
 gender_counts = df['gender'].value_counts()
 
-# Create a pie chart
-plt.figure(figsize=(8, 8))
-plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=140)
-plt.title('Distribution of Gender')
-plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-plt.show()
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset
+url = "https://raw.githubusercontent.com/MashitahSahar/DS2925/refs/heads/main/Finance_data.csv"
+df = pd.read_csv(url)
+
+# Title
+st.title("Distribution of Gender")
+
+# Count gender values
+gender_counts = df['gender'].value_counts()
+
+# Create the pie chart
+fig, ax = plt.subplots(figsize=(8, 8))
+ax.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=140)
+ax.set_title('Distribution of Gender')
+ax.axis('equal')  # Equal aspect ratio ensures a perfect circle
+
+# Show in Streamlit
+st.pyplot(fig)
+
