@@ -25,3 +25,12 @@ ax.set_ylabel('Frequency')
 
 # Show in Streamlit
 st.pyplot(fig)
+
+gender_counts = df['gender'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Distribution of Gender')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
